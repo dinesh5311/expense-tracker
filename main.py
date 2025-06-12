@@ -12,18 +12,15 @@ import schemas
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-origins = [
-    "http://localhost:4200",  # frontend URL
-    "https://expense-front-one.vercel.app/",
-    # Add other origins as needed
-]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,              # OR use ["*"] to allow all origins (not secure)
+    allow_origins=["*"],  # Allow all origins
     allow_credentials=True,
-    allow_methods=["*"],                # Allow all HTTP methods
-    allow_headers=["*"],                # Allow all headers
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
 )
+
 # Dependency
 def get_db():
     db = sessionLocal()
