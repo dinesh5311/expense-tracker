@@ -129,10 +129,3 @@ def category_summary_last_month(db: Session = Depends(get_db)):
             {"category": category, "total": round(total, 2)} for category, total in results
         ]
     }
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:4200"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
